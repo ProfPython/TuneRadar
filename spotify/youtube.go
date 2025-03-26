@@ -18,6 +18,7 @@ import (
 	"google.golang.org/api/youtube/v3"
 )
 
+//Developer key provided by BharatKalluri. Please do not misuse :)
 const developerKey = "AIzaSyDQn4VAc4MzrKOjo2sv5ucmKsQUIfKFaSE"
 
 // https://github.com/BharatKalluri/spotifydl/blob/v0.1.0/src/youtube.go
