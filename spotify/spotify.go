@@ -25,8 +25,6 @@ type Track struct {
 }
 
 const(
-	clientID     = ""       // Replace with your client ID
-	clientSecret = ""   // Replace with your client secret
 	tokenEndpoint       = "https://accounts.spotify.com/api/token"
 	trackInitialPath    = "https://api-partner.spotify.com/pathfinder/v1/query?operationName=getTrack&variables="
 	playlistInitialPath = "https://api-partner.spotify.com/pathfinder/v1/query?operationName=fetchPlaylist&variables="
@@ -35,6 +33,21 @@ const(
 	playlistEndPath     = `{"persistedQuery":{"version":1,"sha256Hash":"b39f62e9b566aa849b1780927de1450f47e02c54abf1e66e513f96e849591e41"}}`
 	albumEndPath        = `{"persistedQuery":{"version":1,"sha256Hash":"46ae954ef2d2fe7732b4b2b4022157b2e18b7ea84f70591ceb164e4de1b5d5d3"}}`
 )
+
+// Global variables for Spotify credentials
+var clientID, clientSecret string
+
+// Initialize credentials 
+func init() {
+	clientID = os.Getenv("SPOTIFY_CLIENT_ID")
+	clientSecret = os.Getenv("SPOTIFY_CLIENT_SECRET")
+
+	if clientID == "" || clientSecret == "" {
+		fmt.Println("Error: Missing Spotify credentials in environment variables")
+		os.Exit(1) // Exit if credentials are missing
+	}
+}
+
 
 func accessToken() (string, error) {
 	data := "grant_type=client_credentials"
