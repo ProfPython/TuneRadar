@@ -1,8 +1,9 @@
+![TuneRadarSongMatch](https://github.com/user-attachments/assets/4c17ef14-8cc7-4fd3-92d0-3f4a047366f4)
 <h1 align="center">TuneRadar :musical_note:</h1>
 
 <p align="center">
   <a href="https://drive.google.com/file/d/13i3BIryXqRK6a371UInq4_03LQPuLLyK/view?usp=sharing" target="_blank">
-  <img src="https://drive.google.com/file/d/13i3BIryXqRK6a371UInq4_03LQPuLLyK/view?usp=sharing" 
+  <img src="https://github.com/user-attachments/assets/4c17ef14-8cc7-4fd3-92d0-3f4a047366f4" 
        alt="screenshot" 
        width="500">
 </a>
