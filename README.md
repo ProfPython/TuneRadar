@@ -1,4 +1,3 @@
-![TuneRadarSongMatch](https://github.com/user-attachments/assets/4c17ef14-8cc7-4fd3-92d0-3f4a047366f4)
 <h1 align="center">TuneRadar :musical_note:</h1>
 
 <p align="center">
