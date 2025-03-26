@@ -1,5 +1,6 @@
+FROM golang:1.24-alpine
 
-FROM golang:1.20 AS builder
+RUN apk update && apk add --no-cache sqlite sqlite-dev build-base
 
 WORKDIR /app
 
@@ -8,16 +9,8 @@ RUN go mod tidy
 
 COPY . .
 
-RUN go build -o main .
+RUN GOOS=linux GOARCH=amd64 go build -o main .
 
-FROM alpine:latest
-
-RUN apk add --no-cache sqlite3
-
-WORKDIR /app
-
-COPY --from=builder /app/main .
-
-EXPOSE 3000
+EXPOSE 8080
 
 CMD ["./main"]
