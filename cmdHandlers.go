@@ -161,7 +161,7 @@ func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
 	http.Handle("/socket.io/", socketServer)
 
 	if serveHTTPS {
-		httpsAddr := ":" + port
+		httpsAddr := "0.0.0.0:" + port
 		httpsServer := &http.Server{
 			Addr: httpsAddr,
 			TLSConfig: &tls.Config{
