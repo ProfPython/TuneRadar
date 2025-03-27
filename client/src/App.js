@@ -12,7 +12,7 @@ import { connect } from "extendable-media-recorder-wav-encoder";
 
 import AnimatedNumber from "./components/AnimatedNumber";
 
-const server = process.env.PORT || "0.0.0.0:3000";
+const server = process.env.REACT_APP_BACKEND_URL || "http://localhost:3000";
 
 var socket = io(server);
 

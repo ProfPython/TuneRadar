@@ -158,15 +158,7 @@ func serve(protocol, port string) {
 }
 
 func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
-	mux := http.NewServeMux()
-
-	// Register socket.io handler
-	mux.Handle("/socket.io/", socketServer)
-
-	// Register other routes
-	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		http.ServeFile(w, r, ".client/public/index.html")
-	})
+	http.Handle("/socket.io/", socketServer)
 
 	if serveHTTPS {
 		httpsAddr := ":" + port
