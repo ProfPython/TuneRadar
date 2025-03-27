@@ -52,11 +52,7 @@ func main() {
 	case "serve":
 		serveCmd := flag.NewFlagSet("serve", flag.ExitOnError)
 		protocol := serveCmd.String("proto", "http", "Protocol to use (http or https)")
-		// Use environment variable for PORT if available, fallback to 3000
-		port := serveCmd.String("p", os.Getenv("PORT"), "Port to use")
-		if *port == "" {
-			*port = "3000" // Default to 3000 if PORT environment variable is not set
-		}
+		port := serveCmd.String("p", "3000", "Port to use")
 		serveCmd.Parse(os.Args[2:])
 		serve(*protocol, *port)
 	case "erase":

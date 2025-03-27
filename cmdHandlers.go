@@ -161,7 +161,7 @@ func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
 	http.Handle("/socket.io/", socketServer)
 
 	if serveHTTPS {
-		httpsAddr := "0.0.0.0:" + port
+		httpsAddr := ":" + port
 		httpsServer := &http.Server{
 			Addr: httpsAddr,
 			TLSConfig: &tls.Config{
@@ -186,7 +186,7 @@ func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
 	}
 
 	log.Printf("Starting HTTP server on port %v", port)
-	if err := http.ListenAndServe("0.0.0.0:"+port, nil); err != nil {
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("HTTP server ListenAndServe: %v", err)
 	}
 }
