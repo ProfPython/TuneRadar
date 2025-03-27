@@ -13,4 +13,4 @@ RUN GOOS=linux GOARCH=amd64 go build -o main .
 
 EXPOSE 3000
 
-CMD ["go run *.go serve"]
+CMD ["./main", "serve"]
