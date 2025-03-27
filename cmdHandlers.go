@@ -185,7 +185,7 @@ func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
 		}
 	}
 
-	log.Printf("Starting HTTP server on port %v", port)
+	log.Printf("Starting HTTP/ server on port %v", port)
 	if err := http.ListenAndServe("0.0.0.0:"+port, nil); err != nil {
 		log.Fatalf("HTTP server ListenAndServe: %v", err)
 	}
