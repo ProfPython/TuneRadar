@@ -23,9 +23,6 @@ COPY --from=frontend /app/client/build /app/public
 
 RUN GOOS=linux GOARCH=amd64 go build -o main .
 
-ENV PORT=3000
-ENV HOST=0.0.0.0
-
 EXPOSE 3000
 
-CMD ["./main", "serve", "--host=0.0.0.0", "--port=3000"]
+CMD ["./main", "serve", "-p", "3000", "-proto", "http"]
