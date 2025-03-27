@@ -158,10 +158,18 @@ func serve(protocol, port string) {
 }
 
 func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
-	http.Handle("/socket.io/", socketServer)
+	mux := http.NewServeMux()
+
+	// Register socket.io handler
+	mux.Handle("/socket.io/", socketServer)
+
+	// Register other routes
+	mux.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, ".client/public/index.html")
+	})
 
 	if serveHTTPS {
-		httpsAddr := "0.0.0.0:" + port
+		httpsAddr := ":" + port
 		httpsServer := &http.Server{
 			Addr: httpsAddr,
 			TLSConfig: &tls.Config{
@@ -185,8 +193,8 @@ func serveHTTP(socketServer *socketio.Server, serveHTTPS bool, port string) {
 		}
 	}
 
-	log.Printf("Starting HTTP/ server on port %v", err)
-	if err := http.ListenAndServe("0.0.0.0:"+port, nil); err != nil {
+	log.Printf("Starting HTTP server on port %v", port)
+	if err := http.ListenAndServe(":"+port, nil); err != nil {
 		log.Fatalf("HTTP server ListenAndServe: %v", err)
 	}
 }
